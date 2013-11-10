@@ -21,7 +21,10 @@ install:
  - if [[ $TRAVIS_PYTHON_VERSION == '3.3' ]]; then pip install -r requirements/test_33.txt; fi
 
 # command to run tests, e.g. python setup.py test
-script: coverage run --source cookiecutter setup.py test
+# script: coverage run --source cookiecutter setup.py test
+script:
+  - python setup.py install
+  - py.test tests/test_examples.py
 
 after_success:
     coveralls
